@@ -1,8 +1,3 @@
-# User Story 2, Airlines Show Page
-# As a visitor
-# When I visit an airlines show page ('/airlines/:id')
-# I see a unique list of passengers that have flights from that airline
-
 require 'rails_helper'
 
 RSpec.describe "Airlines Show Page" do
