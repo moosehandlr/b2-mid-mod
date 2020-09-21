@@ -1,9 +1,3 @@
-# User Story 1, Flights Index Page
-# As a visitor
-# When I visit the flights index page ('/flights')
-# I see a list of all flight numbers
-# And under each flight number I see the names of all that flights passengers
-
 require 'rails_helper'
 
 RSpec.describe "Flights Index Page" do
@@ -20,6 +14,7 @@ RSpec.describe "Flights Index Page" do
     FlightPassenger.create(flight_id: @flight1.id, passenger_id: @passenger1.id)
     FlightPassenger.create(flight_id: @flight1.id, passenger_id: @passenger2.id)
     FlightPassenger.create(flight_id: @flight1.id, passenger_id: @passenger3.id)
+    FlightPassenger.create(flight_id: @flight1.id, passenger_id: @passenger4.id)
 
     FlightPassenger.create(flight_id: @flight2.id, passenger_id: @passenger4.id)
     FlightPassenger.create(flight_id: @flight2.id, passenger_id: @passenger5.id)
@@ -34,12 +29,42 @@ RSpec.describe "Flights Index Page" do
       expect(page).to have_content(@passenger1.name)
       expect(page).to have_content(@passenger2.name)
       expect(page).to have_content(@passenger3.name)
+      expect(page).to have_content(@passenger4.name)
     end
 
     within "#flight-#{@flight2.id}" do
       expect(page).to have_content(@flight2.number)
       expect(page).to have_content(@passenger4.name)
       expect(page).to have_content(@passenger5.name)
+    end
+  end
+
+  it "I Can Remove a Passenger from a Flight" do
+    visit "/flights"
+
+    within "#passenger-#{@passenger1.id}" do
+      expect(page).to have_button("Remove Passenger")
+    end
+
+    within "#passenger-#{@passenger2.id}" do
+      expect(page).to have_button("Remove Passenger")
+    end
+
+    within "#flight-#{@flight1.id}" do
+      within "#passenger-#{@passenger4.id}" do
+        expect(page).to have_button("Remove Passenger")
+        click_button "Remove Passenger"
+      end
+    end
+
+    expect(current_path).to eq("/flights")
+
+    within "#flight-#{@flight1.id}" do
+      expect(page).to_not have_content(@passenger4.name)
+    end
+
+    within "#flight-#{@flight2.id}" do
+      expect(page).to have_content(@passenger4.name)
     end
   end
 end

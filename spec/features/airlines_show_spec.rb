@@ -40,15 +40,15 @@ RSpec.describe "Airlines Show Page" do
   it "I see a unique list of passengers that have flights from that airline" do
     visit "/airlines/#{@airline1.id}"
 
-    expect(page.all('li')[0]).to have_content(@passenger1.name)
-    expect(page.all('li')[1]).to have_content(@passenger2.name)
-    expect(page.all('li')[2]).to have_content(@passenger3.name)
-    expect(page.all('li')[3]).to have_content(@passenger4.name)
+    expect(page).to have_content(@passenger1.name)
+    expect(page).to have_content(@passenger2.name)
+    expect(page).to have_content(@passenger3.name)
+    expect(page).to have_content(@passenger4.name)
 
     visit "/airlines/#{@airline2.id}"
 
-    expect(page.all('li')[0]).to have_content(@passenger5.name)
-    expect(page.all('li')[1]).to have_content(@passenger6.name)
-    expect(page.all('li')[2]).to have_content(@passenger7.name)
+    expect(page).to have_content(@passenger5.name)
+    expect(page).to have_content(@passenger6.name)
+    expect(page).to have_content(@passenger7.name)
   end
 end
