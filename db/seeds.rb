@@ -28,9 +28,13 @@ FlightPassenger.create(flight_id: @flight1.id, passenger_id: @passenger2.id)
 FlightPassenger.create(flight_id: @flight2.id, passenger_id: @passenger2.id)
 FlightPassenger.create(flight_id: @flight2.id, passenger_id: @passenger3.id)
 FlightPassenger.create(flight_id: @flight2.id, passenger_id: @passenger4.id)
+FlightPassenger.create(flight_id: @flight1.id, passenger_id: @passenger6.id)
+FlightPassenger.create(flight_id: @flight2.id, passenger_id: @passenger7.id)
 
 #Delta
 FlightPassenger.create(flight_id: @flight3.id, passenger_id: @passenger5.id)
 FlightPassenger.create(flight_id: @flight3.id, passenger_id: @passenger6.id)
 FlightPassenger.create(flight_id: @flight4.id, passenger_id: @passenger6.id)
 FlightPassenger.create(flight_id: @flight4.id, passenger_id: @passenger7.id)
+FlightPassenger.create(flight_id: @flight3.id, passenger_id: @passenger1.id)
+FlightPassenger.create(flight_id: @flight4.id, passenger_id: @passenger2.id)
